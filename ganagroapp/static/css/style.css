@@ -1,0 +1,160 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    box-sizing: border-box;
+    }
+html,body{
+    overflow-x: hidden;
+    }
+body{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 300;
+    color: white;
+
+    }
+.container{
+
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+
+    }
+    /* CSS for nav */
+.brand{
+    line-height: 1.23;
+    letter-spacing: -0.1rem;
+    position: absolute;
+    width: 100%;
+    left: 30%;
+    color: white;
+    }
+.navigation{
+    background-color: #5cb85c;
+    position: fixed;
+    height: 110px;
+    width: 100%;
+    }
+ul.categorias {
+    list-style-type: none;
+    overflow: hidden;
+    position: absolute;
+    width: 50%;
+    }
+ul.nuevo {
+    right: 10px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    position:absolute;
+    bottom: 20px;
+    }
+ul.login {
+    order: 1;
+    list-style-type: none;
+    overflow: hidden;
+    position: absolute;
+    width: 50%;
+    }
+
+li {
+    float: left;
+    }
+
+li a, .dropbtn {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    }
+
+li a:hover, .dropdown:hover .dropbtn {
+    color: white;
+    text-decoration: none;
+    border:1px solid #000000;
+    border-color: rgba(3, 56, 79,0.3) ;
+    }
+
+li.dropdown {
+    display: inline-block;
+    }
+
+.dropdown-content {
+    display: none;
+    position: fixed;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    }
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    Display: block;
+    text-align: left;
+    }
+
+.dropdown-content a:hover {
+    text-decoration: none;
+    background-color: #adadad;
+    }
+
+.dropdown:hover .dropdown-content {
+    display: block;
+    }
+    /* CSS for nav mobile */
+@media screen and (max-width:414px){
+    body{
+
+
+
+
+        }
+    .brand{
+        display: inline-block;
+        font-size: 2.3rem;
+        }
+    ul.categorias {
+        bottom: 5%;
+        font-size: 1.05rem;
+        }
+    ul.login {
+        left: 60%;
+        bottom: 5%;
+        font-size: 1.05rem;
+        }
+    }
+@media screen and (min-width:415px) and (max-width:899px){
+    .brand{
+        left: 34%;
+        font-size: 3.7rem;
+        }
+    ul.categorias{
+        bottom: 5%;
+        font-size: 1.8rem;
+    }
+    ul.login {
+        left: 69%;
+        bottom: 5%;
+        font-size: 1.8rem;
+        }
+}
+@media screen and (min-width:900px){
+    .brand{
+        left: 44%;
+        font-size: 3.7rem;
+        }
+    ul.categorias{
+        bottom: 5%;
+        font-size: 1.5rem;
+    }
+    ul.login {
+        left: 87%;
+        bottom: 5%;
+        font-size: 1.5rem;
+        }
+}
