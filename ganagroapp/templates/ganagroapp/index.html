@@ -1,40 +1,46 @@
-<!DOCTYPE html>
 {% load staticfiles %}
+<!DOCTYPE html>
 <html>
         <head>
             <title>Agronet</title>
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <link rel="stylesheet" href="{% static 'css/style.css' %}" >
+         <link rel="stylesheet" href="{% static 'css/style.css' %}" >
             <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,900" rel="stylesheet">
             </head>
         <body>
-            <main>
-            <header class="" >
+            <main >
+            <header >
                 <nav class="navigation">
 
                     <span class="brand">AgroNet</span>
+                    <div class="contenedor">
                   <!-- Navbar content -->
                    <ul class="categorias">
                     <li class="dropdown">
                       <a href="javascript:void(0)" class="dropbtn nav">CATEGORIAS</a>
                       <div class="dropdown-content">
-                        <a href="#">Link 1</a>
+                        <a href="#">{{ products }}</a>
                         <a href="#">Link 2</a>
                         <a href="#">Link 3</a>
                     </li>
                   </ul>
+
+
                   <ul class="login">
-                    <li >
+                    <li class="dropdownr" >
                       <a href="login.php" class="dropbtn">INICIA SESION</a>
                     </li>
-                  </ul>
+
 
                 </div>
                 </nav>
 
             </header>
-            <section>
 
+            <section class="container">
+                <div>
+                <p>{{ products }} </p>
+                </div>
             </section>
             <section>
 
@@ -43,5 +49,6 @@
 
             </section>
             <footer></footer>
+        </main>
         </body>
     </html>

@@ -10,11 +10,19 @@ html,body{
 body{
     font-family: 'Montserrat', sans-serif;
     font-weight: 300;
-    color: white;
+    color: black;
 
     }
+p{
+    color:black;
+}
+.contenedor{
+    position: relative;
+    overflow: hidden;
+    top: 60px;
+}
 .container{
-
+    position: relative;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
@@ -31,30 +39,22 @@ body{
     }
 .navigation{
     background-color: #5cb85c;
-    position: fixed;
+    position: static;
     height: 110px;
     width: 100%;
     }
 ul.categorias {
+    float: left;
     list-style-type: none;
-    overflow: hidden;
-    position: absolute;
+
     width: 50%;
     }
-ul.nuevo {
-    right: 10px;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    position:absolute;
-    bottom: 20px;
-    }
+
 ul.login {
+    float: right;
     order: 1;
     list-style-type: none;
-    overflow: hidden;
-    position: absolute;
+
     width: 50%;
     }
 
@@ -78,9 +78,12 @@ li a:hover, .dropdown:hover .dropbtn {
     }
 
 li.dropdown {
+    max-width: 100%;
     display: inline-block;
     }
-
+li.dropdownr{
+    float: right;
+}
 .dropdown-content {
     display: none;
     position: fixed;
@@ -107,25 +110,17 @@ li.dropdown {
     display: block;
     }
     /* CSS for nav mobile */
+
 @media screen and (max-width:414px){
-    body{
-
-
-
-
-        }
     .brand{
         display: inline-block;
         font-size: 2.3rem;
         }
     ul.categorias {
-        bottom: 5%;
-        font-size: 1.05rem;
+
         }
     ul.login {
-        left: 60%;
-        bottom: 5%;
-        font-size: 1.05rem;
+
         }
     }
 @media screen and (min-width:415px) and (max-width:899px){

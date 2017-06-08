@@ -20,7 +20,6 @@ class Product(models.Model):
     product = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
     def __str__(self):
-        return self.subcategory
         return self.product
         return self.description
 
