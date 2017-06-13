@@ -1,54 +1,23 @@
+{% extends 'ganagroapp/base.html' %}
 {% load staticfiles %}
-<!DOCTYPE html>
-<html>
-        <head>
-            <title>Agronet</title>
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-         <link rel="stylesheet" href="{% static 'css/style.css' %}" >
-            <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,900" rel="stylesheet">
-            </head>
-        <body>
-            <main >
-            <header >
-                <nav class="navigation">
+{% block content %}
 
-                    <span class="brand">AgroNet</span>
-                    <div class="contenedor">
-                  <!-- Navbar content -->
-                   <ul class="categorias">
-                    <li class="dropdown">
-                      <a href="javascript:void(0)" class="dropbtn nav">CATEGORIAS</a>
-                      <div class="dropdown-content">
-                        <a href="#">{{ products }}</a>
-                        <a href="#">Link 2</a>
-                        <a href="#">Link 3</a>
-                    </li>
-                  </ul>
+<!-- all products-->
+<section >
 
+    {% for product in products %}
+    <div class="product">
+    <img src="{% static 'img/vaca.jpg' %}" class="imgpro">
+    <div class="info">
+    <p>
+        <h3> CLIENTE: </h3>{{ product.client.user.first_name }} {{ product.client.user.last_name }}
+        <h3> OFERTA: </h3> {{ product.product }}
+        <h3> DESCRIPCION: </h3> {{ product.description }}
+    </p>
+    </div>
 
-                  <ul class="login">
-                    <li class="dropdownr" >
-                      <a href="login.php" class="dropbtn">INICIA SESION</a>
-                    </li>
+    </div>
+    {% endfor %}
 
-
-                </div>
-                </nav>
-
-            </header>
-
-            <section class="container">
-                <div>
-                <p>{{ products }} </p>
-                </div>
-            </section>
-            <section>
-
-            </section>
-            <section>
-
-            </section>
-            <footer></footer>
-        </main>
-        </body>
-    </html>
+</section>
+{% endblock content %}
