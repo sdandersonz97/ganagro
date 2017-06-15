@@ -8,30 +8,22 @@ class Client(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=20)
     city = models.CharField(max_length=20, default='')
-    def __str__(self):
-        return self.user
-        return self.birth_date
+    def __str__(self):        
+        return self.ci
         return self.phone
         return self.city
 
 
 class Product(models.Model):
     client = models.ForeignKey('Client')
-    subcategory = models.ForeignKey('SubCategory')
+    category = models.ForeignKey('Category')
     product = models.CharField(max_length=30)
     description = models.CharField(max_length=100)
     created_date = models.DateTimeField(default=timezone.now)
-    #def __str__(self):
-            #return self.client +";"+ self.product +";"+self.description
-
-
-
-
-class SubCategory(models.Model):
-    category = models.ForeignKey('Category')
-    name = models.CharField(max_length=30)
     def __str__(self):
-        return self.name
+            return self.product
+            return self.description
+            return str(self.created_date)
 
 
 class Category(models.Model):
