@@ -1,0 +1,37 @@
+{% extends 'ganagroapp/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="container-fluid">
+<!-- all products-->
+<h1> Mis ofertas </h1>
+
+{% for product in products %}
+    {% for image in images %}
+        {% if image.product.pk == product.pk %}
+        <div class="row panel panel-default">
+            <div class="panel-body">
+            <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+                <img src="  {{ image.image.url }} " class="img-responsive img-rounded">
+            </div>
+            <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+
+                    <a class="btn btn-default" href="{% url 'ganagroapp:edit_product' pk=product.pk pk1=user.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                    <h3> <a href="{% url 'ganagroapp:product_detail' pk=product.pk %}">{{ product.product }}</a> </h3>
+                    <p> DESCRIPCION:  {{ product.description }} </p>
+
+            </div>
+        </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+{% endfor %}
+
+</div>
+
+
+
+
+
+
+{% endblock content %}

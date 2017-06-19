@@ -6,48 +6,87 @@
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <link rel="stylesheet" href="{% static 'css/style.css' %}" >
             <link href="https://fonts.googleapis.com/css?family=Montserrat:200,300,400,700,900" rel="stylesheet">
-            </head>
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        </head>
         <body>
-            <main >
-            <header >
-                <nav class="navigation">
 
-                    <span class="brand">AgroNet</span>
-                    <div class="contenedor">
-                  <!-- Navbar content -->
-                   <ul class="categorias">
-                    <li class="dropdown">
-                      <a href="javascript:void(0)" class="dropbtn nav">CATEGORIAS</a>
-                      <div class="dropdown-content">
-                          <ul class="categorias">
-                            {% for cat in category %}
-                        <li class="dropdown"><a href="{% url 'ganagroapp:product_category' pk=cat.pk %} ">{{ cat.name }}</a></li>
-                            {% endfor %}
-                        </ul>
+
+                    <nav class="navbar navbar-inverse">
+
+                        <div class="container-fluid">
+
+                            <div class="navbar-header">
+                                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                    <span class="icon-bar"></span>
+                                </button>
+                                <a href="{% url 'ganagroapp:index' %}" class="navbar-brand ">AgroNet</a>
+                            </div>
+
+                        <div class="collapse navbar-collapse" id="myNavbar">
+                            <!-- Navbar content -->
+                            <ul class="nav navbar-nav">
+
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">CATEGORIAS <span class="caret"></span> </a>
+
+                                        <ul class="dropdown-menu">
+                                            {% for cat in category %}
+                                                <li><a href="{% url 'ganagroapp:product_category' pk=cat.pk %} ">{{ cat.name }}</a></li>
+                                            {% endfor %}
+                                        </ul>
+                                </li>
+
+
+                 {% if user.is_authenticated %}
+
+
+                     <li class="dropdown" >
+                          <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">PERFIL <span class="caret"></span> </a>
+                          <ul class="dropdown-menu">
+
+                              <li ><a href="{% url 'ganagroapp:logout' %}">Cerrar sesion <span class="glyphicon glyphicon-log-out"></span></a></li>
+                              <li ><a href="{% url 'ganagroapp:profile' pk=user.pk %}">{{ user.first_name }} <span class="glyphicon glyphicon-user"></a></li>
+                              <li> <a href="{% url 'ganagroapp:new_product' %}" >Crear Anuncio</a> </li>
+
+                          </ul>
+
+                     </li>
+
+
+
+
+
+
+                {% else %}
+
+
+                      <li class="active" >
+                        <a href="{% url 'ganagroapp:login' %}" >iniciar session <span class="glyphicon glyphicon-log-in"></span></a></a>
+                      </li>
+
+
+                {% endif %}
+                    </ul>
+                    <form class="navbar-form navbar-left">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Search">
                         </div>
-                    </li>
-                  </ul>
-
-
-                  <ul class="login">
-                    <li class="dropdownr" >
-                      <a href="login.php" class="dropbtn">INICIA SESION</a>
-                    </li>
-                </ul>
-                <ul class="login">
-                  <li class="dropdownr" >
-                    <a href="login.php" class="dropbtn">CARGAR PRODUCTO</a>
-                  </li>
-              </ul>
-
+                        <button type="submit" class="btn btn-default">buscar</button>
+                    </form>
                 </div>
-                </nav>
+            </div>
+        </nav>
 
-            </header>
+        <main>
+            <section class="container">
             {% block content %}
 
             {% endblock content %}
-
+            </section>
             <footer></footer>
         </main>
         </body>

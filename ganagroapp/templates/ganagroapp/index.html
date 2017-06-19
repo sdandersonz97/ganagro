@@ -1,23 +1,39 @@
 {% extends 'ganagroapp/base.html' %}
+
 {% load staticfiles %}
+
+
+
+
+
 {% block content %}
 
 <!-- all products-->
-<section >
 
+<div class="container-fluid">
     {% for product in products %}
-    <div class="product">
-    <img src="{% static 'img/vaca.jpg' %}" class="imgpro">
-    <div class="info">
-    <p>
+        {% for image in images %}
+            {% if image.product.pk == product.pk %}
 
-        <h3> OFERTA: </h3> <a href="{% url 'ganagroapp:product_detail' pk=product.pk %}">{{ product.product }}</a>
-        <h3> DESCRIPCION: </h3> {{ product.description }}
-    </p>
-    </div>
+            <div class="row panel panel-default">
+                <div class="panel-body">
+                <div class=" col-xs-6 col-sm-6 col-md-6 col-lg-6" >
+                    <img src="  {{ image.image.url }} " class="img-responsive img-rounded">
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
 
-    </div>
+                        <h3>  <a href="{% url 'ganagroapp:product_detail' pk=product.pk %}">{{ product.product }}</a> </h3>
+                        <p> {{ product.description }} </p>
+
+                </div>
+            </div>
+            </div>
+
+            {% endif %}
+        {% endfor %}
     {% endfor %}
 
-</section>
+    </div>
+
+
 {% endblock content %}

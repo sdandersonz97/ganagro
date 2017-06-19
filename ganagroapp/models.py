@@ -8,7 +8,7 @@ class Client(models.Model):
     birth_date = models.DateField(null=True, blank=True)
     phone = models.CharField(max_length=20)
     city = models.CharField(max_length=20, default='')
-    def __str__(self):        
+    def __str__(self):
         return self.ci
         return self.phone
         return self.city
@@ -25,6 +25,9 @@ class Product(models.Model):
             return self.description
             return str(self.created_date)
 
+class Image(models.Model):
+    product = models.ForeignKey('Product')
+    image = models.ImageField(upload_to='products')
 
 class Category(models.Model):
     name=models.CharField(max_length=30)
