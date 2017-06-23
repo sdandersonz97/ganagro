@@ -53,14 +53,15 @@ def register_user(request):
 	return render(request, "new_user.html", dictionary,{'user_form' : user_form})
 @login_required
 def new_product(request):
+    client = get_object_or_404(Client, user=request.user.pk)
+
     if request.method == "POST":
             form = ProductForm(request.POST)
             form2 = ProductImageForm(request.POST, request.FILES)
             if form.is_valid() and form2.is_valid():
                 product = form.save(commit=False)
                 image = form2.save(commit=False)
-                product.Client = request.user
-                product.client_id = request.user.pk
+                product.client_id = client.pk
                 product.created_date = timezone.now()
                 product.save()
                 image.product_id = product.pk
