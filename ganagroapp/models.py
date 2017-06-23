@@ -18,6 +18,8 @@ class Product(models.Model):
     client = models.ForeignKey('Client')
     category = models.ForeignKey('Category')
     product = models.CharField(max_length=30)
+    price = models.PositiveIntegerField(default=100)
+    location = models.CharField(max_length=100,default='trinidad')
     description = models.CharField(max_length=100)
     created_date = models.DateTimeField(default=timezone.now)
     def __str__(self):
