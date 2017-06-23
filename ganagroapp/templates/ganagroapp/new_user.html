@@ -12,10 +12,38 @@
     <div class="panel-body">
 <form method="post">
     {% csrf_token %}
-     <table>
-         {{ user_form }}
-     </table>
+    {{ user_form.non_field_errors }}
+    <div class="input-group">
+        {{ user_form.subject.errors }}
+        <label for="{{ user_form.username.id_for_label }}">Nombre de usuario </label>
+        {{ user_form.username }}
+    </div>
+    <div class="input-group">
+        <label for="{{ user_form.email.id_for_label }}">Email </label>
+        {{ user_form.email}}
+    </div>
+    <div class="input-group">
+        <label for="{{ user_form.first_name.id_for_label }}">Nombre </label>
+        {{ user_form.first_name }}
+
+    </div>
+    <div class="input-group">
+        <label for="{{ user_form.last_name.id_for_label }}">Apellido </label>
+        {{ user_form.last_name }}
+    </div>
+    <div class="input-group">
+        <label for="{{ user_form.password1.id_for_label }}">Contrasenha </label>
+        {{ user_form.password1 }}
+    </div>
+    <div class="input-group">
+        <label for="{{ user_form.password2s.id_for_label }}">repita la contrasenha </label>
+        {{ user_form.password2 }}
+    </div>
+    <div class="input-group">
+
+
     <p><input type="submit" value="Registrar"  class="btn btn-lg btn-success btn-block" /> </p>
+    </div>
 </form>
 </div>
 </div>
