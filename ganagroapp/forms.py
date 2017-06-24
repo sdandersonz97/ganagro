@@ -1,5 +1,5 @@
 from django import forms
-from .models import Product, Image
+from .models import Product, Image, Client
 from django.forms.extras.widgets import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -19,6 +19,17 @@ class ProductImageForm(forms.ModelForm):
     class Meta:
         model = Image
         fields = ['image']
+
+class ClientForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ClientForm, self).__init__(*args, **kwargs)
+        self.fields['ci'].widget.attrs = {'class' : 'form-control', 'required': 'required', 'placeholder': 'Titulo del anuncio'}
+        self.fields['birth_date'].widget.attrs = {'class' : 'form-control', 'required': 'required', 'placeholder': 'Descripcion del anuncio'}
+        self.fields['phone'].widget.attrs = {'class' : 'form-control', 'required': 'required'}
+        self.fields['city'].widget.attrs = {'class' : 'form-control', 'required': 'required'}
+    class Meta:
+        model = Client
+        fields = ['ci','birth_date','phone','city']
 
 class UserCreateForm(UserCreationForm):
     email = forms.EmailField(required=True)

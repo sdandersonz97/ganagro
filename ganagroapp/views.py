@@ -34,23 +34,28 @@ def profile(request, pk):
     return render(request,'ganagroapp/profile.html',{'category' : category, 'products' : products, 'images' : images})
 
 def register_user(request):
-	username = password = email = first_name = last_name=''
-	if request.POST:
-		user_form = UserCreateForm(request.POST)
-		if user_form.is_valid():
-			usuario = User(username=request.POST['username'], email=request.POST['email'], first_name=request.POST['first_name'], last_name=request.POST['last_name'])
-			usuario.set_password(request.POST['password1'])
-			usuario.save()
-			return HttpResponseRedirect(reverse('ganagroapp:index'))
-	else:
-		user_form = UserCreateForm()
-
-	dictionary = {
+    username = password = email = first_name = last_name=''
+    if request.method == "POST":
+        form = ClientForm(request.POST)
+        user_form = UserCreateForm(request.POST)
+        if user_form.is_valid() and form.is_valid():
+            client = form.save(commit=False)
+            usuario = User(username=request.POST['username'], email=request.POST['email'], first_name=request.POST['first_name'], last_name=request.POST['last_name'])
+            usuario.set_password(request.POST['password1'])
+            usuario.save()
+            usuario.refresh_from_db()
+            client.user_id = usuario.pk
+            client.save()
+            return HttpResponseRedirect(reverse('ganagroapp:index'))
+    else:
+        user_form = UserCreateForm()
+        form = ClientForm()
+    dictionary = {
 		'user_form': user_form,
 		'page_title': 'Aplicacion - Register',
 		'body_class': 'register',
 	}
-	return render(request, "new_user.html", dictionary,{'user_form' : user_form})
+    return render(request, "new_user.html",{'user_form' : user_form, 'form' : form })
 @login_required
 def new_product(request):
     client = get_object_or_404(Client, user=request.user.pk)

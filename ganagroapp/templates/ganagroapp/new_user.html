@@ -13,6 +13,9 @@
 <form method="post">
     {% csrf_token %}
     {{ user_form.non_field_errors }}
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+
     <div class="input-group">
         {{ user_form.subject.errors }}
         <label for="{{ user_form.username.id_for_label }}">Nombre de usuario </label>
@@ -30,6 +33,22 @@
     <div class="input-group">
         <label for="{{ user_form.last_name.id_for_label }}">Apellido </label>
         {{ user_form.last_name }}
+    </div>
+    <div class="input-group">
+        <label for="{{ form.ci.id_for_label }}">carnet de identidad </label>
+        {{ form.ci }}
+    </div>
+    <div class="input-group">
+        <label for="{{form.birth_date.id_for_label }}">Fecha de nacimiento </label>
+        {{ form.birth_date }}
+    </div>
+    <div class="input-group">
+        <label for="{{ form.phone.id_for_label }}">Telefono </label>
+        {{ form.phone }}
+    </div>
+    <div class="input-group">
+        <label for="{{ form.city.id_for_label }}">ciudad </label>
+        {{ form.city }}
     </div>
     <div class="input-group">
         <label for="{{ user_form.password1.id_for_label }}">Contrasenha </label>
