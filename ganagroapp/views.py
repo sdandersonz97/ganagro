@@ -88,7 +88,8 @@ def new_product(request):
         form = ProductForm()
         form2 = ProductImageForm()
         token = TokenForm()
-    return render(request, 'ganagroapp/new_product.html',{'form': form, 'form2':form2, 'token':token,'category': category,'message': message })
+        message=""
+    return render(request, 'ganagroapp/new_product.html',{'form': form, 'form2':form2, 'token':token,'category': category, 'message':message})
 
 @login_required
 def edit_product(request, pk, pk1):
