@@ -1,7 +1,7 @@
 from django.db import models
 from django.conf import settings
 from django.utils import timezone
-
+from PIL import Image as img
 class Client(models.Model):
     user = models.OneToOneField(settings.AUTH_USER_MODEL)
     ci = models.CharField(max_length=9)
@@ -30,9 +30,32 @@ class Product(models.Model):
 class Image(models.Model):
     product = models.ForeignKey('Product')
     image = models.ImageField(upload_to='products')
+    image_height = models.PositiveIntegerField(null=True, blank=True, editable=False )
+    image_width = models.PositiveIntegerField(null=True, blank=True, editable=False)
+
+    def __unicode__(self):
+        return "{0}".format(self.image)
+
+    def save(self):
+        if not self.image:
+            return
+
+        super(Image, self).save()
+
+        image = img.open(self.image)
+        (width, height) = image.size
+        size = ( 500, 300)
+        image = image.resize(size)
+        image.save(self.image.path)
+
 
 class Category(models.Model):
     name=models.CharField(max_length=30)
     def __str__(self):
         return self.name
+
+class Token(models.Model):
+    token=models.TextField()
+    def __str__(self):
+        return self.token
 # Create your models here.

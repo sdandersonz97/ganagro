@@ -16,3 +16,8 @@ body{
 p{
     color:black;
 }
+
+img-size{
+    width: 30%;
+    height: 30%;
+}

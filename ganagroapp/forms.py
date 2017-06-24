@@ -1,9 +1,16 @@
 from django import forms
-from .models import Product, Image, Client
+from .models import Product, Image, Client,Token
 from django.forms.extras.widgets import *
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 
+class TokenForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(TokenForm, self).__init__(*args, **kwargs)
+        self.fields['token'].widget.attrs = {'class' : 'form-control', 'required': 'required', 'placeholder': 'Inserte codigo '}
+    class Meta:
+        model = Token
+        fields =['token']
 
 class ProductForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
@@ -16,6 +23,9 @@ class ProductForm(forms.ModelForm):
         fields = ('product','description','category')
 
 class ProductImageForm(forms.ModelForm):
+    def __init__(self, *args, **kwargs):
+        super(ProductImageForm, self).__init__(*args, **kwargs)
+        self.fields['image'].widget.attrs = {'class' : 'form-control', 'required': 'required'}
     class Meta:
         model = Image
         fields = ['image']
@@ -23,8 +33,8 @@ class ProductImageForm(forms.ModelForm):
 class ClientForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(ClientForm, self).__init__(*args, **kwargs)
-        self.fields['ci'].widget.attrs = {'class' : 'form-control', 'required': 'required', 'placeholder': 'Titulo del anuncio'}
-        self.fields['birth_date'].widget.attrs = {'class' : 'form-control', 'required': 'required', 'placeholder': 'Descripcion del anuncio'}
+        self.fields['ci'].widget.attrs = {'class' : 'form-control', 'required': 'required' }
+        self.fields['birth_date'].widget.attrs = {'class' : 'form-control', 'required': 'required', 'placeholder': ' mm-dd-yyy'}
         self.fields['phone'].widget.attrs = {'class' : 'form-control', 'required': 'required'}
         self.fields['city'].widget.attrs = {'class' : 'form-control', 'required': 'required'}
     class Meta:

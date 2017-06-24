@@ -11,58 +11,64 @@
     <div class="panel-heading  text-center"> <h3> Resgistrate como usuario </h3> </div>
     <div class="panel-body">
 <form method="post">
+    <div class="form-group row">
+     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+     </div>
+     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
     {% csrf_token %}
     {{ user_form.non_field_errors }}
     {% csrf_token %}
     {{ form.non_field_errors }}
 
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         {{ user_form.subject.errors }}
         <label for="{{ user_form.username.id_for_label }}">Nombre de usuario </label>
         {{ user_form.username }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ user_form.email.id_for_label }}">Email </label>
         {{ user_form.email}}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ user_form.first_name.id_for_label }}">Nombre </label>
         {{ user_form.first_name }}
 
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ user_form.last_name.id_for_label }}">Apellido </label>
         {{ user_form.last_name }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ form.ci.id_for_label }}">carnet de identidad </label>
         {{ form.ci }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{form.birth_date.id_for_label }}">Fecha de nacimiento </label>
         {{ form.birth_date }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ form.phone.id_for_label }}">Telefono </label>
         {{ form.phone }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ form.city.id_for_label }}">ciudad </label>
         {{ form.city }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ user_form.password1.id_for_label }}">Contrasenha </label>
         {{ user_form.password1 }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
         <label for="{{ user_form.password2s.id_for_label }}">repita la contrasenha </label>
         {{ user_form.password2 }}
     </div>
-    <div class="input-group">
+    <div class="input-group input-group-sm col-xs-6">
 
 
     <p><input type="submit" value="Registrar"  class="btn btn-lg btn-success btn-block" /> </p>
     </div>
+</div>
+</div>
 </form>
 </div>
 </div>

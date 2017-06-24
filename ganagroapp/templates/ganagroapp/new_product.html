@@ -7,28 +7,40 @@
     <div class="panel-heading  text-center"> <h3> Crear Anuncio </h3> </div>
     <div class="panel-body">
     <form method="POST" enctype="multipart/form-data" class="product-form">{% csrf_token %}
+    <div class="form-group row">
+     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+     </div>
+     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
         {{ form.non_field_errors }}
-        <div class="input-group">
+        <div class="input-group input-group-sm col-xs-6">
             {{ form.subject.errors }}
+            <label for="{{ token.token.id_for_label }}">Codigo:</label>
+            {{ token.token }}
+        </div>
+        <div class="input-group input-group-sm col-xs-6">
+            {{ form.subject.errors }}
+            <p>{{ message }}<p>
             <label for="{{ form.product.id_for_label }}">Nombre del producto: </label>
             {{ form.product }}
         </div>
-        <div class="input-group">
+        <div class="input-group input-group-sm col-xs-6">
             <label for="{{ form.description.id_for_label }}">Descripcion del producto: </label>
             {{ form.description }}
         </div>
-        <div class="input-group">
+        <div class="input-group input-group-sm col-xs-6">
             <label for="{{ form.category.id_for_label }}">Seleccione una categoria: </label>
             {{ form.category }}
 
         </div>
-        <div class="input-group">
+        <div class="input-group input-group-sm col-xs-6">
             <label for="{{ form2.Image.id_for_label }}">Seleccione una imagen: </label>
             {{ form2.image }}
         </div>
-        <div class="input-group">
+        <div class="input-group input-group-sm col-xs-6">
         <button type="submit" class="btn btn-lg btn-success btn-block">Guardar</button>
         </div>
+    </div>
+    </div>
     </form>
 </div>
 {% endblock %}
